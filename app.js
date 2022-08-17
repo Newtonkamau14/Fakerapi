@@ -2,7 +2,7 @@ const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const cors = require('cors')
 const bookController = require('./routes/bookController');
-const axios = require('axios');
+const animeController = require('./routes/animeController');
 const fetch = require('node-fetch')
 const PORT = process.env.PORT || 3000;
 const app = express()
@@ -20,7 +20,8 @@ app.use(express.urlencoded({ extended: false}))
 
 
 //Routes
-app.use('/books',bookController)
+app.use('/books',bookController);
+app.use('/anime',animeController);
 
 //Homepage
 app.get('/',(req,res) => {
@@ -29,15 +30,7 @@ app.get('/',(req,res) => {
     })
 });
 
-//Get books
-const fakerBooksUrl = "https://fakerapi.it/api/v1/books?_quantity=20"
-app.get('/results',async(req,res) =>{
-  const fetchBooks = await fetch(fakerBooksUrl);
-  const data = await fetchBooks.json();
-  res.json(data);
-})
-
-
+//Listening on port 300
 app.listen(PORT,() => {
     console.log('Listening on port 3000')
 })
