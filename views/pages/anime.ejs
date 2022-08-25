@@ -1,3 +1,20 @@
 <div class="container">
-    <div id="listanime"></div>
+    <form class="d-flex m-3" action="/anime/search" method="post" >
+        <input class="form-control me-2" name="asearch" id="asearch" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    
+    <div class="row">
+        <% json.data.forEach(anime => { %>
+            <div class="col-3">
+                <div class="card m-1" style="width: 18rem;">
+                    <img src="<%= anime.anime_img %>" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= anime.anime_id %></h5>
+                        <p class="card-text"><%= anime.anime_name %></p>
+                    </div>
+                </div>
+            </div>
+        <% }) %> 
+    </div>
 </div>

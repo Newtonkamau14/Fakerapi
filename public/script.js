@@ -1,3 +1,4 @@
+/*
 const listbooks = document.getElementById("listbooks");
 const listanime = document.getElementById("listanime")
 
@@ -10,8 +11,8 @@ async function getBooks(){
     json.data.forEach(book => {
         books += `
         <div class="row">
-            <div class="col-md>
-                <div class="card">
+            <div class="col-3>
+                <div class="card shadow">
                     <h5 class="card-header">${book.title}</h5>
                     <div class="card-body">
                     <h5 class="card-title">${book.author}</h5>
@@ -51,3 +52,4 @@ async function getAnime(){
 
 };
 getAnime();
+*/

@@ -30,7 +30,7 @@ app.get('/',(req,res) => {
     })
 });
 
-//Listening on port 300
+//Listening on port 3000
 app.listen(PORT,() => {
     console.log('Listening on port 3000')
 })

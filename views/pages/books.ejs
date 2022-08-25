@@ -1,6 +1,18 @@
 <div class="container">
    <h4>List of Books</h4>
-   <div id="listbooks">
-   </div>
+   <div class="row">
+      <% json.data.forEach(book => { %>
+         <div class="col-3">
+            <div class="card my-2 shadow">
+                <h5 class="card-header bg-primary text-light"><%= book.title %></h5>
+                <div class="card-body">
+                <h5 class="card-title"><%= book.author %></h5>
+                <h6 class="card-title"><%= book.genre %></h6>
+                <p class="card-text"><%= book.description %></p>
+                </div>
+            </div>
+        </div>
+      <% }) %>
+  </div>
 </div>
-<script src="script.js"></script>
+
