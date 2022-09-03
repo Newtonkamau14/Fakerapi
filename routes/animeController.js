@@ -16,11 +16,15 @@ router.get('/',async (req,res) => {
 
 //Get facts of a specific anime
 router.post('/search',async (req,res) => {
-    let animeQuery = req.query.asearch;
-    const animeFactApiUrl = `https://anime-facts-rest-api.herokuapp.com/api/v1/:${req.query.asearch}`
+    let animeQuery = req.body.asearch;
+    const animeFactApiUrl = `https://anime-facts-rest-api.herokuapp.com/api/v1/${animeQuery}`
     const specificAnime = await fetch(animeFactApiUrl);
     const data = await specificAnime.json();
-    res.send(data)
+    
+    res.render('pages/animeSearch',{
+        title:"Specific Anime",
+        data: data
+    })
 });
 
 
