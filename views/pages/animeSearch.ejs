@@ -1,15 +1,14 @@
 <div class="container">
 
-    <div class="row">
+    <div class="list-group my-3">
         <% data.data.forEach(anime => { %>
-            <div class="col-3">
-                <div class="card m-1" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title"><%= anime.fact_id %></h5>
-                        <p class="card-text"><%= anime.fact %></p>
-                    </div>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-100 justify-content-between">
+                  <h5 class="mb-1"><%= anime.fact_id %></h5>
                 </div>
-            </div>
+                <p class="mb-1"><%= anime.fact %></p>
+            </a>
         <% }) %> 
     </div>
+    
 </div>
