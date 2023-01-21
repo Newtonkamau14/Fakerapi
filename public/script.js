@@ -1,55 +1,34 @@
-/*
-const listbooks = document.getElementById("listbooks");
-const listanime = document.getElementById("listanime")
+var buttonload = document.getElementById('buttonload');
+var addresslist = document.getElementById('addresslist')
 
-async function getBooks(){
-    const response = await fetch('/books/results');
+async function getAddress(){
+    const response = await fetch('/addressdata');
     const json = await response.json();
-    const { title,author,genre,description } = json;
-    var books = '';
-    
-    json.data.forEach(book => {
-        books += `
-        <div class="row">
-            <div class="col-3>
-                <div class="card shadow">
-                    <h5 class="card-header">${book.title}</h5>
-                    <div class="card-body">
-                    <h5 class="card-title">${book.author}</h5>
-                    <h6 class="card-title">${book.genre}</h6>
-                    <p class="card-text">${book.description}</p>
+    const {street,streetName,buildingNumber,city,country} = json;
+    var addressData = "";
+
+    json.data.forEach(addressinfo => {
+        
+        addressData += `
+            <div class="row">
+                <div class="col-3>
+                    <div class="card border shadow" style="width: 18rem;">
+                        <div class="card-body">
+                        <h5 class="card-title">${addressinfo.street}${','}${addressinfo.streetName}</h5>
+                        <p class="card-text">${addressinfo.buildingNumber}</p>
+                        <p class="card-text">${addressinfo.city}</p>
+                        <p class="card-text">${addressinfo.country}</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        `
-        listbooks.innerHTML += books;
         
+        `
     });
 
+    addresslist.innerHTML += addressData;
 }
-getBooks();
 
-async function getAnime(){
-    const response = await fetch('/anime/results');
-    const json = await response.json();
-    const {anime_id,anime_name,anime_img} = json;
-    var animes = '';
-
-    json.data.forEach(anime => {
-        animes += `
-        <div class="card m-1" style="width: 18rem;">
-            <img src="${anime.anime_img}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">${anime.anime_id}</h5>
-                <p class="card-text">${anime.anime_name}</p>
-            </div>
-        </div>
-        
-        `
-        listanime.innerHTML += animes;
-    })
-
-};
-getAnime();
-*/
+window.addEventListener('load', function() {
+    getAddress()
+})
